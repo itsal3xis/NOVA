@@ -17,13 +17,17 @@ def speak(text, volume=0.5):
     while pygame.mixer.music.get_busy():
         pygame.time.Clock().tick(10)
 
+    # Explicitly stop the music and quit the mixer
+    pygame.mixer.music.stop()
+    pygame.mixer.quit()  # Ensure that pygame releases the file
+
+    # Now safely remove the file
     os.remove("temp.mp3")
 
 def listen_for_command():
-    """Listen for commands, including the wake word 'VEXA'."""
+    """Listen for commands, including the wake word 'Nova'."""
     recognizer = sr.Recognizer()
     with sr.Microphone() as source:
-        print("Listening for the wake word 'VEXA'...")
         recognizer.adjust_for_ambient_noise(source, duration=1)  # Adjust for noise
         audio = recognizer.listen(source)
         
@@ -42,7 +46,7 @@ def main():
     while True:
         command = listen_for_command()  # Listen for the wake word and commands
         if command:
-            if 'hello' in command:  # Check for the wake word 'VEXA'
+            if 'nova' in command:  # Check for the wake word 'Nova'
                 speak("Hello, I am your assistant! How can I help you?")
                 command = listen_for_command()  # Listen for the next command after the wake word
 
@@ -54,6 +58,13 @@ def main():
                         break
                     else:
                         speak(f"You said: {command}")
+
+
+
+
+
+
+
 
 if __name__ == "__main__":
     main()
