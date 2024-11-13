@@ -1,2 +1,2 @@
-# VEXA
-Virtual Experienced Xpert Assistant
+# NOVA
+Normal Oridnary Voice Assistant
