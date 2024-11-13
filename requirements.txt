@@ -1,7 +1,7 @@
-pyttsx3
 SpeechRecognition
 PyAudio
 gTTS
-playsound
+playsound==1.2.2
 pygame
-pocketsphinx
+
+
